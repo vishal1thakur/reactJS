@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Useritem from './Useritem';
+import PropTypes from 'prop-types';
 
 class Users extends Component {
   state = {
@@ -39,6 +40,10 @@ const userStyle = {
   display: 'grid',
   gridTemplateColumns: 'repeat(3, 1fr)',
   gridGap: '1rem',
+};
+
+Useritem.PropTypes = {
+  user: PropTypes.object.isRequired,
 };
 
 export default Users;
