@@ -7,6 +7,9 @@
   background: white;
   box-shadow: 2px 2px 50px rgb(206, 206, 206);
   overflow: scroll;
+  transform: translateX(-100%);
+  transition: all 0.5s ease;
+  opacity: 0;
   h2 {
     padding: 2rem;
   }
@@ -20,8 +23,8 @@
   img {
     width: 30%;
   }
-  &:hover {
-    background: rgb(170, 190, 219);
+  &:hover:not(.selected) {
+    background: rgb(198, 213, 236);
   }
 }
 
@@ -53,5 +56,10 @@
 }
 
 .selected {
-  background: rgb(172, 163, 223);
+  background: rgb(204, 198, 243);
+}
+
+.active-library {
+  transform: translateX(0%);
+  opacity: 1;
 }

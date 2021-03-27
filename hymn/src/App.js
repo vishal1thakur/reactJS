@@ -5,6 +5,7 @@ import './styles/app.scss';
 import Player from './components/Player';
 import Song from './components/Song';
 import Library from './components/Library';
+import Nav from './components/Nav';
 // Import Util
 import data from './util';
 
@@ -18,6 +19,7 @@ function App() {
     current: 0,
     duration: 0,
   });
+  const [libraryStatus, setLibraryStatus] = useState(false);
   // 2.2) Song Time Slider
   const timeUpdateHandler = (e) => {
     const current = e.target.currentTime;
@@ -28,6 +30,7 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false);
   return (
     <div className="App">
+      <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus} />
       <Song currentSong={currentSong} />
       <Player
         audioRef={audioRef}
@@ -38,6 +41,7 @@ function App() {
         songInfo={songInfo}
       />
       <Library
+        libraryStatus={libraryStatus}
         audioRef={audioRef}
         songs={songs}
         setCurrentSong={setCurrentSong}
