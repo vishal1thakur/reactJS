@@ -1,5 +1,5 @@
 // A) ----------------- All Imports --------------------
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
   faPlay,
@@ -9,10 +9,14 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 // B) ------------------ Component ----------------------
-const Player = ({currentSong, isPlaying, setIsPlaying}) => {
-  // 1) HTML Ref
-  const audioRef = useRef(null);
-
+const Player = ({
+  audioRef,
+  currentSong,
+  isPlaying,
+  setIsPlaying,
+  setSongInfo,
+  songInfo,
+}) => {
   // 2) Event Handlers
   // 2.1) Play + Pause funtionality
 
@@ -26,13 +30,6 @@ const Player = ({currentSong, isPlaying, setIsPlaying}) => {
       audioRef.current.play();
       setIsPlaying(!isPlaying);
     }
-  };
-
-  // 2.2) Song Time Slider
-  const timeUpdateHandler = (e) => {
-    const current = e.target.currentTime;
-    const duration = e.target.duration;
-    setSongInfo({...setSongInfo, current, duration});
   };
 
   // 2.3) Drag Slider
@@ -50,10 +47,6 @@ const Player = ({currentSong, isPlaying, setIsPlaying}) => {
   };
 
   // 4) State
-  const [songInfo, setSongInfo] = useState({
-    current: 0,
-    duration: 0,
-  });
 
   // 5) Elements
   return (
@@ -83,12 +76,6 @@ const Player = ({currentSong, isPlaying, setIsPlaying}) => {
         />
         <FontAwesomeIcon className="skip-back" size="2x" icon={faAngleRight} />
       </div>
-      <audio
-        onTimeUpdate={timeUpdateHandler}
-        onLoadedMetadata={timeUpdateHandler}
-        ref={audioRef}
-        src={currentSong.audio}
-      ></audio>
     </div>
   );
 };
