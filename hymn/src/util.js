@@ -10,7 +10,7 @@ function chillHop() {
       audio: 'https://mp3.chillhop.com/serve.php/?mp3=11239',
       color: ['#B6AD85', '#283058'],
       id: uuidv4(),
-      active: true,
+      active: false,
     },
     {
       name: 'Doin It',
