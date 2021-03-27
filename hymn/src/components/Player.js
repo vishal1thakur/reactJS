@@ -6,13 +6,21 @@ import {
   faAngleRight,
 } from '@fortawesome/free-solid-svg-icons';
 
-const Player = ({currentSong}) => {
+const Player = ({currentSong, isPlaying, setIsPlaying}) => {
   // Ref
   const audioRef = useRef(null);
   // Functions
   // Event Handlers
   const playSongHandler = () => {
-    audioRef.current.play();
+    if (isPlaying) {
+      // if the isPlaying state is true & we click the pause button, stop the music and make isPlaying false
+      audioRef.current.pause();
+      setIsPlaying(!isPlaying);
+    } else {
+      // else, play the music on the click and make isPlaying true
+      audioRef.current.play();
+      setIsPlaying(!isPlaying);
+    }
   };
 
   // Elements
