@@ -1,5 +1,6 @@
 // A) ----------------- All Imports --------------------
 import React, {useEffect} from 'react';
+import {playAudio} from '../Util';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
   faPlay,
@@ -73,6 +74,12 @@ const Player = ({
         setCurrentSong(songs[(currentIndex - 1) % songs.length]);
       }
     }
+    playAudio(isPlaying, audioRef);
+  };
+
+  // Add the styles
+  const trackAnim = {
+    transform: `translateX(${songInfo.animationPercentage}%)`,
   };
 
   // 3) Functions
@@ -90,14 +97,22 @@ const Player = ({
     <div className="player">
       <div className="time-control">
         <p>{getTime(songInfo.current)}</p>
-        <input
-          min={0}
-          max={songInfo.duration}
-          value={songInfo.current}
-          onChange={dragHandler}
-          type="range"
-        />
-        <p>{getTime(songInfo.duration || 0)}</p>
+        <div
+          style={{
+            background: `linear-gradient(to right, ${currentSong.color[0]}, ${currentSong.color[1]})`,
+          }}
+          className="track"
+        >
+          <input
+            min={0}
+            max={songInfo.duration}
+            value={songInfo.current}
+            onChange={dragHandler}
+            type="range"
+          />
+          <div style={trackAnim} className="animate-track"></div>
+        </div>
+        <p>{songInfo.duration ? getTime(songInfo.duration) : '0:00'}</p>
       </div>
       <div className="play-control">
         <FontAwesomeIcon
