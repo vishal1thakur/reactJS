@@ -34,6 +34,12 @@ const Player = ({currentSong, isPlaying, setIsPlaying}) => {
     setSongInfo({...setSongInfo, current, duration});
   };
 
+  // 2.3) Drag Slider
+  const dragHandler = (e) => {
+    audioRef.current.currentTime = e.target.value;
+    setSongInfo({...songInfo, current: e.target.value});
+  };
+
   // 3) Functions
   // 3.1) Format time in seconds and minutes
   const getTime = (time) => {
@@ -53,7 +59,13 @@ const Player = ({currentSong, isPlaying, setIsPlaying}) => {
     <div className="player">
       <div className="time-control">
         <p>{getTime(songInfo.current)}</p>
-        <input type="range" />
+        <input
+          min={0}
+          max={songInfo.duration}
+          value={songInfo.current}
+          onChange={dragHandler}
+          type="range"
+        />
         <p>{getTime(songInfo.duration)}</p>
       </div>
       <div className="play-control">
