@@ -1,6 +1,5 @@
 // A) ----------------- All Imports --------------------
-import React, {useEffect} from 'react';
-import {playAudio} from '../Util';
+
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
   faPlay,
@@ -21,11 +20,9 @@ const Player = ({
   songs,
   setCurrentSong,
 }) => {
-  // UseEffect
-  useEffect(() => {
-    // Add active state
+  const activeLibraryHandler = (nextPrev) => {
     const newSongs = songs.map((song) => {
-      if (song.id === currentSong.id) {
+      if (song.id === nextPrev.id) {
         return {
           ...song,
           active: true,
@@ -38,7 +35,7 @@ const Player = ({
       }
     });
     setSongs(newSongs);
-  }, [currentSong]);
+  };
 
   // 2) Event Handlers
   // 2.1) Play + Pause funtionality
@@ -62,19 +59,22 @@ const Player = ({
   };
 
   // 2.4) Skipping Forward & Backward
-  const skipTrackHandler = (direction) => {
+  const skipTrackHandler = async (direction) => {
     let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
     if (direction === 'skip-forward') {
-      setCurrentSong(songs[(currentIndex + 1) % songs.length]);
+      await setCurrentSong(songs[(currentIndex + 1) % songs.length]);
+      activeLibraryHandler(songs[(currentIndex + 1) % songs.length]);
     }
     if (direction === 'skip-back') {
       if ((currentIndex - 1) % songs.length === -1) {
-        setCurrentSong(songs[songs.length - 1]);
+        await setCurrentSong(songs[songs.length - 1]);
+        activeLibraryHandler(songs[songs.length - 1]);
       } else {
-        setCurrentSong(songs[(currentIndex - 1) % songs.length]);
+        await setCurrentSong(songs[(currentIndex - 1) % songs.length]);
+        activeLibraryHandler(songs[(currentIndex - 1) % songs.length]);
       }
     }
-    playAudio(isPlaying, audioRef);
+    if (isPlaying) audioRef.current.play();
   };
 
   // Add the styles
