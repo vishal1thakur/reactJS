@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
 
 body {
   background: #1b1b1b;
+  font-family: 'Lexend', sans-serif;
 }
 
 button{
@@ -21,6 +22,7 @@ button{
   background: transparent;
   color: white;
   transition: all 0.5s ease;
+  font-family: 'Lexend', sans-serif;
   &:hover{
     background-color: #23d997;
     color: white;
@@ -29,7 +31,7 @@ button{
 
 h2 {
     font-weight: lighter;
-    font-size: 4rem;
+    font-size: 3.4rem;
   }
 
 h3{
