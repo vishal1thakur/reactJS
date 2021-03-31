@@ -11,6 +11,10 @@ const GlobalStyle = createGlobalStyle`
 body {
   background: #1b1b1b;
   font-family: 'Lexend', sans-serif;
+  overflow: scroll;
+  ::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;
 }
 
 button{
