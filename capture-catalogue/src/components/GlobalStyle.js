@@ -12,6 +12,7 @@ body {
   background: #1b1b1b;
   font-family: 'Lexend', sans-serif;
   overflow: scroll;
+  overflow-x: hidden;
   ::-webkit-scrollbar {
     width: 0;  /* Remove scrollbar space */
     background: transparent;
