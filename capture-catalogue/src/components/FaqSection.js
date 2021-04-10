@@ -18,7 +18,7 @@ const FaqSection = () => {
       ref={element}
     >
       <h2>
-        Any Qustions <span>FAQ</span>
+        Any Questions <span>FAQ</span>
       </h2>
       <AnimateSharedLayout>
         <Toggle title="How Do I Start?">
