@@ -25,13 +25,13 @@ h2{
   color: #333;
 }
 h3{
-  font-size: 1.3rem;
+  font-size: 1rem;
   color: #333;
-  padding: 1rem;
+  padding: 0.8rem;
 
 }
 p{
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   line-height: 200%;
   color: #696969;
 }
