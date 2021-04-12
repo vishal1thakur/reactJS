@@ -5,6 +5,7 @@ import {motion} from 'framer-motion';
 import {useDispatch} from 'react-redux';
 import {loadDetail} from '../actions/detailAction';
 import {Link} from 'react-router-dom';
+import {smallImage} from '../Util';
 
 const Game = ({name, released, image, id}) => {
   // Load Details
@@ -21,7 +22,7 @@ const Game = ({name, released, image, id}) => {
         <p>{released}</p>
         <img
           src={
-            image ||
+            smallImage(image, 640) ||
             'https://www.wildhareboca.com/wp-content/uploads/sites/310/2018/03/image-not-available.jpg'
           }
           alt={name}
