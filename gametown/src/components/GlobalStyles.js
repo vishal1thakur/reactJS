@@ -30,7 +30,7 @@ h2{
 h3{
   font-size: 1rem;
   color: #333;
-  padding: 0.8rem;
+  padding: 0.8rem 0;
 
 }
 p{
