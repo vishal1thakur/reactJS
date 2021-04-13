@@ -69,6 +69,7 @@ const CardShadow = styled(motion.div)`
   overflow-y: scroll;
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
+  z-index: 5;
   top: 0;
   left: 0;
   &::-webkit-scrollbar {
@@ -88,6 +89,7 @@ const Detail = styled(motion.div)`
   padding: 2rem 5rem;
   background: white;
   position: absolute;
+  z-index: 10;
   left: 10%;
   color: black;
   img {

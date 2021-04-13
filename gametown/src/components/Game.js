@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 import {smallImage} from '../Util';
 
 const Game = ({name, released, image, id}) => {
-  const stringPathID = id.toString();
+  const stringPathId = id.toString();
   // Load Details
   const dispatch = useDispatch();
   const loadDetailHandler = () => {
@@ -17,12 +17,12 @@ const Game = ({name, released, image, id}) => {
   };
 
   return (
-    <StyledGame layoutId={stringPathID} onClick={loadDetailHandler}>
+    <StyledGame layoutId={stringPathId} onClick={loadDetailHandler}>
       <Link to={`/game/${id}`}>
-        <motion.h3 layoutId={`title ${stringPathID}`}>{name}</motion.h3>
+        <motion.h3 layoutId={`title ${stringPathId}`}>{name}</motion.h3>
         <p>{released}</p>
         <motion.img
-          layoutId={`image ${stringPathID}`}
+          layoutId={`image ${stringPathId}`}
           src={
             smallImage(image, 640) ||
             'https://www.wildhareboca.com/wp-content/uploads/sites/310/2018/03/image-not-available.jpg'
