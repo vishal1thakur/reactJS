@@ -46,6 +46,10 @@ a{
 img {
   display: block;
 }
+input{
+  font-weight: bold;
+  font-family: 'Mukta', sans-serif;
+}
 `;
 
 export default GlobalStyles;
